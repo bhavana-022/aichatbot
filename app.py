@@ -1,9 +1,8 @@
-# Q&A Chatbot
-#from langchain.llms import OpenAI
+
 
 from dotenv import load_dotenv
 
-load_dotenv()  # take environment variables from .env.
+load_dotenv()  
 
 import streamlit as st
 import os
@@ -23,14 +22,14 @@ def to_markdown(text):
 os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-## Function to load OpenAI model and get respones
+
 
 def get_gemini_response(question):
     model = genai.GenerativeModel('gemini-pro')
     response = model.generate_content(question)
     return response.text
 
-##initialize our streamlit app
+
 
 st.set_page_config(page_title="Q&A Demo")
 
@@ -40,8 +39,6 @@ input=st.text_input("Input: ",key="input")
 
 
 submit=st.button("Ask the question")
-
-## If ask button is clicked
 
 if submit:
     
